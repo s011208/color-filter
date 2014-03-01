@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	<dimen name="color_picker_center_x">100dp</dimen>
+	<dimen name="color_picker_center_y">100dp</dimen>
+	<dimen name="color_picker_center_radius">40dp</dimen>
+	<dimen name="color_picker_margin">10dp</dimen>
+</resources>
