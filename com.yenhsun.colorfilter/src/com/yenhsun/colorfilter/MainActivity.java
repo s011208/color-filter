@@ -38,6 +38,7 @@ import android.widget.Spinner;
 import com.google.ads.AdRequest;
 import com.google.ads.AdSize;
 import com.google.ads.AdView;
+import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener,
         SeekBar.OnSeekBarChangeListener, Spinner.OnItemSelectedListener
@@ -108,6 +109,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         initComponents();
         bindService();
         addAdView();
+        AdBuddiz.cacheAds(this);
+    }
+
+    public void onBackPressed() {
+        AdBuddiz.showAd(this);
+        super.onBackPressed();
     }
 
     protected void onDestroy() {
