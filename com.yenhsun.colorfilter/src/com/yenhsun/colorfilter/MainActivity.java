@@ -245,7 +245,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                                             : R.string.disable_filter))
                                     .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentIntent(appIntent)
-                                    .setPriority(Notification.PRIORITY_LOW)
+//                                    .setPriority(Notification.PRIORITY_LOW)s
                                     .setAutoCancel(false).setOngoing(true);
                             nm.cancelAll();
                             nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
@@ -262,7 +262,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                                             : R.string.disable_filter))
                                     .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentIntent(appIntent)
-                                    .setPriority(Notification.PRIORITY_LOW)
+//                                    .setPriority(Notification.PRIORITY_LOW)
                                     .setAutoCancel(false).setOngoing(true);
                             nm.cancelAll();
                             nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
