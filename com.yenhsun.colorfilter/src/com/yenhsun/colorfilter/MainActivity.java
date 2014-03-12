@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     public void onBackPressed() {
-        AdBuddiz.showAd(this);
+//        AdBuddiz.showAd(this);
         super.onBackPressed();
     }
 
