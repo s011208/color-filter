@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     public void onBackPressed() {
-        AdBuddiz.showAd(this);
+//        AdBuddiz.showAd(this);
         super.onBackPressed();
     }
 
@@ -135,7 +135,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
                             @Override
                             public void run() {
-                                // TODO Auto-generated method stub
                                 mAdView.loadAd(new AdRequest());
                             }
                         });
@@ -143,7 +142,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                     try {
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
@@ -245,8 +243,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                                             : R.string.disable_filter))
                                     .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentIntent(appIntent)
-                                    .setPriority(Notification.PRIORITY_LOW)
                                     .setAutoCancel(false).setOngoing(true);
+                            int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+                            if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                                builder.setPriority(Notification.PRIORITY_LOW);
+                            }
                             nm.cancelAll();
                             nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
                         } else {
