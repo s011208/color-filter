@@ -52,6 +52,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     public static final boolean DEBUG = false;
     public static final String TAG = "Colorfilter";
     public static final int DEFAULT_FILTER_COLOR = 0x30666600;
+    public static final int CUSTOMIZED_COLOR = 4;
     private RadioGroup mEnableGroup;
     private SharedPreferences mSharf;
     private SeekBar mAlphaSeekBar, mRedSeekBar, mGreenSeekBar, mBlueSeekBar;
@@ -113,7 +114,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     public void onBackPressed() {
-//        AdBuddiz.showAd(this);
+        // AdBuddiz.showAd(this);
         super.onBackPressed();
     }
 
@@ -175,7 +176,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                 android.R.layout.simple_spinner_item, recommandColors);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mRecommandColorSpinner.setAdapter(adapter);
-        mRecommandColorSpinner.setSelection(3);
+        mRecommandColorSpinner.setSelection(CUSTOMIZED_COLOR);
         mRecommandColorSpinner.setOnItemSelectedListener(this);
 
         mAlphaSeekBar = (SeekBar) findViewById(R.id.alpha_seek_bar);
@@ -319,7 +320,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        mRecommandColorSpinner.setSelection(3);
+        mRecommandColorSpinner.setSelection(CUSTOMIZED_COLOR);
     }
 
     @Override
@@ -346,6 +347,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                 break;
             case 2:
                 mFilterColor = 0x30005500;
+                setSeekBarProgress(mFilterColor);
+                mSharf.edit().putInt(SHARF_KEY_FILTER_COLOR, mFilterColor).commit();
+                setColorFilterServiceBackground(mFilterColor);
+                break;
+            case 3:
+                mFilterColor = 0xA0000000;
                 setSeekBarProgress(mFilterColor);
                 mSharf.edit().putInt(SHARF_KEY_FILTER_COLOR, mFilterColor).commit();
                 setColorFilterServiceBackground(mFilterColor);
