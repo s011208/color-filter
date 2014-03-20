@@ -245,12 +245,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                     .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentIntent(appIntent)
                                     .setAutoCancel(false).setOngoing(true);
+                            nm.cancelAll();
                             int currentapiVersion = android.os.Build.VERSION.SDK_INT;
                             if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                                 builder.setPriority(Notification.PRIORITY_LOW);
+                                nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
+                            } else {
+                                nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.getNotification());
                             }
-                            nm.cancelAll();
-                            nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
                         } else {
                             NotificationCompat.Builder builder = new NotificationCompat.Builder(
                                     context);
