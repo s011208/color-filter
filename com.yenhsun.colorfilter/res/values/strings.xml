@@ -14,6 +14,8 @@
     <string name="green_text">Green</string>
     <string name="blue_text">Blue</string>
     <string name="using_recommand_color">Recommand</string>
+    <string name="toast_show_filter">Enable blue-ray filter</string>
+    <string name="toast_hide_filter">disable blue-ray filter</string>
 
     <string-array name="recommand_color">
         <item>Nature (Recommanded)</item>

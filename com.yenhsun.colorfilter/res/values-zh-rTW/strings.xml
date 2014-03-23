@@ -14,6 +14,8 @@
     <string name="green_text">綠色</string>
     <string name="blue_text">藍色</string>
     <string name="using_recommand_color">建議顏色</string>
+    <string name="toast_show_filter">藍光濾波器已開啟</string>
+    <string name="toast_hide_filter">藍光濾波器已關閉</string>
 
     <string-array name="recommand_color">
         <item>自然色(推薦)</item>

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public class ColorFilterPanelService extends Service {
     private WindowManager mWm;
@@ -68,7 +69,10 @@ public class ColorFilterPanelService extends Service {
                 } catch (Exception e) {// ignore
                 }
             }
+            Toast.makeText(this, enable ? R.string.toast_show_filter : R.string.toast_hide_filter,
+                    Toast.LENGTH_SHORT).show();
         }
+        SwithWidget.performUpdate(this);
         return Service.START_NOT_STICKY;
     }
 
