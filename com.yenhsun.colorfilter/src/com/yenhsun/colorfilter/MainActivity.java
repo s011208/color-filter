@@ -154,6 +154,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     protected void onResume() {
         super.onResume();
         mIsForeGround = true;
+        if (mSharf != null) {
+            boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
+            mEnableGroup.check(enableFilter ? R.id.enable_filter
+                    : R.id.disable_filter);
+        }
     }
 
     protected void onPause() {
@@ -251,7 +256,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                 builder.setPriority(Notification.PRIORITY_LOW);
                                 nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
                             } else {
-                                nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.getNotification());
+                                nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID,
+                                        builder.getNotification());
                             }
                         } else {
                             NotificationCompat.Builder builder = new NotificationCompat.Builder(
