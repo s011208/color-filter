@@ -108,7 +108,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         initComponents();
-        bindService();
         addAdView();
         AdBuddiz.cacheAds(this);
     }
@@ -141,7 +140,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                         });
                     }
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(50000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -153,6 +152,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
     protected void onResume() {
         super.onResume();
+        bindService();
         mIsForeGround = true;
         if (mSharf != null) {
             boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
@@ -164,6 +164,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     protected void onPause() {
         super.onPause();
         mIsForeGround = false;
+        this.unbindService(mConnection);
     }
 
     private void initComponents() {
