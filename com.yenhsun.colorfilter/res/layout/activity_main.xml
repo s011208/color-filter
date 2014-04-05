@@ -1,13 +1,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:background="#af000000" >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#aaaaaa" >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,8 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/white_oval_bg"
-                android:orientation="vertical" >
+                android:background="@drawable/transparent_oval_bg"
+                android:orientation="vertical"
+                android:padding="10dp" >
 
                 <RadioGroup
                     android:id="@+id/enable_group"
@@ -45,7 +46,8 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-thin"
-                        android:text="@string/enable_filter" />
+                        android:text="@string/enable_filter"
+                        android:textColor="#ffffff" />
 
                     <RadioButton
                         android:id="@+id/disable_filter"
@@ -54,7 +56,8 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-thin"
-                        android:text="@string/disable_filter" />
+                        android:text="@string/disable_filter"
+                        android:textColor="#ffffff" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -63,18 +66,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/white_oval_bg"
-                android:orientation="horizontal" >
+                android:background="@drawable/transparent_oval_bg"
+                android:orientation="horizontal"
+                android:padding="10dp" >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:maxLines="3"
                     android:fontFamily="sans-serif-thin"
                     android:gravity="center_vertical"
+                    android:maxLines="3"
                     android:text="@string/using_recommand_color"
+                    android:textColor="#ffffff"
                     android:textSize="18sp" />
 
                 <Spinner
@@ -92,8 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/white_oval_bg"
-                android:orientation="vertical" >
+                android:background="@drawable/transparent_oval_bg"
+                android:orientation="vertical"
+                android:padding="10dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,10 +114,12 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
-                        android:text="@string/alpha_text" />
+                        android:text="@string/alpha_text"
+                        android:textColor="#ffffff" />
 
                     <SeekBar
                         android:id="@+id/alpha_seek_bar"
+                        style="@style/android:Theme.Light"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
@@ -131,10 +139,12 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
-                        android:text="@string/red_text" />
+                        android:text="@string/red_text"
+                        android:textColor="#ffffff" />
 
                     <SeekBar
                         android:id="@+id/red_seek_bar"
+                        style="@style/android:Theme.Light"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
@@ -154,10 +164,12 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
-                        android:text="@string/green_text" />
+                        android:text="@string/green_text"
+                        android:textColor="#ffffff" />
 
                     <SeekBar
                         android:id="@+id/green_seek_bar"
+                        style="@style/android:Theme.Light"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
@@ -177,10 +189,12 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
-                        android:text="@string/blue_text" />
+                        android:text="@string/blue_text"
+                        android:textColor="#ffffff" />
 
                     <SeekBar
                         android:id="@+id/blue_seek_bar"
+                        style="@style/android:Theme.Light"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
@@ -192,15 +206,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@drawable/white_oval_bg"
-                android:orientation="vertical" >
+                android:background="@drawable/transparent_oval_bg"
+                android:orientation="vertical"
+                android:padding="10dp" >
 
                 <CheckBox
                     android:id="@+id/show_notification_check_box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-thin"
-                    android:text="@string/show_notification" />
+                    android:text="@string/show_notification"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/transparent_oval_bg"
+                android:orientation="vertical"
+                android:padding="10dp" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ranbow_line" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

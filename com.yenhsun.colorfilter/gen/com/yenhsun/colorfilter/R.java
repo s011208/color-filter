@@ -9,9 +9,13 @@ package com.yenhsun.colorfilter;
 
 public final class R {
     public static final class array {
-        public static final int recommand_color=0x7f070000;
+        public static final int recommand_color=0x7f080000;
     }
     public static final class attr {
+    }
+    public static final class color {
+        public static final int pager_content_bg_color=0x7f050001;
+        public static final int pager_content_bg_color_shadow=0x7f050000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -20,34 +24,39 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
-        public static final int color_picker_center_radius=0x7f050004;
-        public static final int color_picker_center_x=0x7f050002;
-        public static final int color_picker_center_y=0x7f050003;
-        public static final int color_picker_margin=0x7f050005;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
+        public static final int color_picker_center_radius=0x7f060004;
+        public static final int color_picker_center_x=0x7f060002;
+        public static final int color_picker_center_y=0x7f060003;
+        public static final int color_picker_margin=0x7f060005;
+        public static final int navigation_bar_height=0x7f060007;
+        public static final int pager_content_bg_color_strok_width=0x7f060008;
+        public static final int status_bar_height=0x7f060006;
     }
     public static final class drawable {
         public static final int custom_btn_beige=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int switch_off=0x7f020002;
-        public static final int switch_on=0x7f020003;
-        public static final int universal_hello_bg=0x7f020004;
-        public static final int white_oval_bg=0x7f020005;
+        public static final int ranbow_line=0x7f020002;
+        public static final int switch_off=0x7f020003;
+        public static final int switch_on=0x7f020004;
+        public static final int transparent_oval_bg=0x7f020005;
+        public static final int white_oval_bg=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000b;
-        public static final int alpha_seek_bar=0x7f0a0005;
-        public static final int blue_seek_bar=0x7f0a0008;
-        public static final int disable_filter=0x7f0a0003;
-        public static final int enable_filter=0x7f0a0002;
-        public static final int enable_group=0x7f0a0001;
-        public static final int green_seek_bar=0x7f0a0007;
-        public static final int linearLayoutAdmob=0x7f0a0000;
-        public static final int recommand_color_spinnner=0x7f0a0004;
-        public static final int red_seek_bar=0x7f0a0006;
-        public static final int show_notification_check_box=0x7f0a0009;
-        public static final int switch_widget_view=0x7f0a000a;
+        public static final int action_settings=0x7f0b000c;
+        public static final int alpha_seek_bar=0x7f0b0006;
+        public static final int blue_seek_bar=0x7f0b0009;
+        public static final int disable_filter=0x7f0b0004;
+        public static final int enable_filter=0x7f0b0003;
+        public static final int enable_group=0x7f0b0002;
+        public static final int green_seek_bar=0x7f0b0008;
+        public static final int linearLayoutAdmob=0x7f0b0001;
+        public static final int main_activity=0x7f0b0000;
+        public static final int recommand_color_spinnner=0x7f0b0005;
+        public static final int red_seek_bar=0x7f0b0007;
+        public static final int show_notification_check_box=0x7f0b000a;
+        public static final int switch_widget_view=0x7f0b000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -55,35 +64,37 @@ public final class R {
         public static final int switch_widget=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
+        public static final int main=0x7f0a0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
-        public static final int alpha_text=0x7f060008;
-        public static final int app_name=0x7f060000;
-        public static final int blue_text=0x7f06000b;
-        public static final int click_to_switch_state=0x7f060007;
-        public static final int disable_filter=0x7f060003;
-        public static final int enable_filter=0x7f060002;
-        public static final int green_text=0x7f06000a;
-        public static final int pick_color_btn=0x7f060004;
-        public static final int red_text=0x7f060009;
-        public static final int show_notification=0x7f060006;
-        public static final int start_filter_after_boot_completed=0x7f060005;
-        public static final int toast_hide_filter=0x7f06000e;
-        public static final int toast_show_filter=0x7f06000d;
-        public static final int using_recommand_color=0x7f06000c;
+        public static final int action_settings=0x7f070001;
+        public static final int alpha_text=0x7f070008;
+        public static final int app_name=0x7f070000;
+        public static final int blue_text=0x7f07000b;
+        public static final int click_to_switch_state=0x7f070007;
+        public static final int disable_filter=0x7f070003;
+        public static final int enable_filter=0x7f070002;
+        public static final int green_text=0x7f07000a;
+        public static final int pick_color_btn=0x7f070004;
+        public static final int red_text=0x7f070009;
+        public static final int show_notification=0x7f070006;
+        public static final int start_filter_after_boot_completed=0x7f070005;
+        public static final int toast_hide_filter=0x7f07000e;
+        public static final int toast_show_filter=0x7f07000d;
+        public static final int using_recommand_color=0x7f07000c;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
 
         
 
@@ -98,12 +109,15 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
-        public static final int btnStyleBeige=0x7f080002;
+        public static final int AppTheme=0x7f090001;
+        /**  <item name="android:windowTranslucentNavigation">true</item> 
+         */
+        public static final int TransparentStyle=0x7f090002;
+        public static final int btnStyleBeige=0x7f090003;
     }
     public static final class xml {
         public static final int switch_widget=0x7f040000;

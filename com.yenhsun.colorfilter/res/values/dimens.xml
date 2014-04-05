@@ -3,8 +3,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-	<dimen name="color_picker_center_x">100dp</dimen>
-	<dimen name="color_picker_center_y">100dp</dimen>
-	<dimen name="color_picker_center_radius">40dp</dimen>
-	<dimen name="color_picker_margin">10dp</dimen>
+    <dimen name="color_picker_center_x">100dp</dimen>
+    <dimen name="color_picker_center_y">100dp</dimen>
+    <dimen name="color_picker_center_radius">40dp</dimen>
+    <dimen name="color_picker_margin">10dp</dimen>
+    <dimen name="status_bar_height">@*android:dimen/status_bar_height</dimen>
+    <dimen name="navigation_bar_height">@*android:dimen/navigation_bar_height</dimen>
+    <dimen name="pager_content_bg_color_strok_width">2dp</dimen>
+
 </resources>

@@ -1,6 +1,8 @@
 
 package com.yenhsun.colorfilter;
 
+import java.lang.reflect.Method;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -28,10 +30,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
@@ -41,35 +45,53 @@ import com.google.ads.AdView;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener,
-        SeekBar.OnSeekBarChangeListener, Spinner.OnItemSelectedListener
-{
+        SeekBar.OnSeekBarChangeListener, Spinner.OnItemSelectedListener {
     public static final String SHARF_FILE_NAME = "filter_sharf";
+
     public static final String SHARF_KEY_ENABLE_FILTER = "enable_filter_sharf";
+
     public static final String SHARF_KEY_FILTER_COLOR = "filter_color_sharf";
+
     public static final String SHARF_KEY_SHOW_NOTIFICATION = "show_notification_sharf";
+
     public static final String CHANG_STATE_FROM_NOTIFICATION = "change_state_from_notification";
+
     public static final String FILTER_COLOR = "filter_color";
+
     public static final boolean DEBUG = false;
+
     public static final String TAG = "Colorfilter";
+
     public static final int DEFAULT_FILTER_COLOR = 0x30666600;
+
     public static final int CUSTOMIZED_COLOR = 4;
+
     private RadioGroup mEnableGroup;
+
     private SharedPreferences mSharf;
+
     private SeekBar mAlphaSeekBar, mRedSeekBar, mGreenSeekBar, mBlueSeekBar;
+
     private CheckBox mShowNotiCb;
+
     private AdView mAdView;
+
     private Spinner mRecommandColorSpinner;
 
+    private FrameLayout mMainLayout;
+
     private boolean mIsForeGround = false;
+
     private int mFilterColor;
+
     private static final int NOTIFICATION_ID = MainActivity.class.hashCode();
+
     private static final String NOTIFICATION_TAG = "COLOR_FILTER_NOTIFICATION";
 
     private IColorChanged mService;
 
     private ServiceConnection mConnection = new ServiceConnection() {
-        public void onServiceConnected(ComponentName className,
-                IBinder service) {
+        public void onServiceConnected(ComponentName className, IBinder service) {
             mService = IColorChanged.Stub.asInterface(service);
 
         }
@@ -107,9 +129,35 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        initMainLayout();
         initComponents();
         addAdView();
         AdBuddiz.cacheAds(this);
+    }
+
+    private void initMainLayout() {
+        boolean hasNavigationBar = true;
+        try {
+            Class<?> c = Class.forName("android.view.WindowManagerGlobal");
+            Method m = c.getDeclaredMethod("getWindowManagerService", new Class<?>[] {});
+            Object windowManagerService = m.invoke(null, new Object[] {});
+            c = windowManagerService.getClass();
+            m = c.getDeclaredMethod("hasNavigationBar", new Class<?>[] {});
+            hasNavigationBar = (Boolean)m.invoke(windowManagerService, new Object[] {});
+            if (DEBUG)
+                Log.d(TAG, "hasNavigationBar: " + hasNavigationBar);
+        } catch (Exception e) {
+            if (DEBUG)
+                Log.w(TAG, "failed to get windowManagerService", e);
+        }
+        int statusBarHeight = (int)getResources().getDimension(R.dimen.status_bar_height);
+        int navigationBarHeight = hasNavigationBar ? (int)getResources().getDimension(
+                R.dimen.navigation_bar_height) : 0;
+        mMainLayout = (FrameLayout)findViewById(R.id.main_activity);
+        mMainLayout.setPadding(mMainLayout.getPaddingLeft(), statusBarHeight,
+                mMainLayout.getPaddingRight(), navigationBarHeight);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        }
     }
 
     public void onBackPressed() {
@@ -123,7 +171,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
     private void addAdView() {
         mAdView = new AdView(this, AdSize.BANNER, "a152d1374374ac9");
-        LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayoutAdmob);
+        LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutAdmob);
         layout.addView(mAdView);
         new Thread(new Runnable() {
 
@@ -140,7 +188,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                         });
                     }
                     try {
-                        Thread.sleep(50000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -156,8 +204,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mIsForeGround = true;
         if (mSharf != null) {
             boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
-            mEnableGroup.check(enableFilter ? R.id.enable_filter
-                    : R.id.disable_filter);
+            mEnableGroup.check(enableFilter ? R.id.enable_filter : R.id.disable_filter);
         }
     }
 
@@ -171,12 +218,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mSharf = getSharedPreferences(SHARF_FILE_NAME, 0);
         boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
         mFilterColor = mSharf.getInt(SHARF_KEY_FILTER_COLOR, DEFAULT_FILTER_COLOR);
-        mEnableGroup = (RadioGroup) findViewById(R.id.enable_group);
-        mEnableGroup.check(enableFilter ? R.id.enable_filter
-                : R.id.disable_filter);
+        mEnableGroup = (RadioGroup)findViewById(R.id.enable_group);
+        mEnableGroup.check(enableFilter ? R.id.enable_filter : R.id.disable_filter);
         mEnableGroup.setOnCheckedChangeListener(this);
 
-        mRecommandColorSpinner = (Spinner) findViewById(R.id.recommand_color_spinnner);
+        mRecommandColorSpinner = (Spinner)findViewById(R.id.recommand_color_spinnner);
         String[] recommandColors = getResources().getStringArray(R.array.recommand_color);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, recommandColors);
@@ -185,27 +231,27 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mRecommandColorSpinner.setSelection(CUSTOMIZED_COLOR);
         mRecommandColorSpinner.setOnItemSelectedListener(this);
 
-        mAlphaSeekBar = (SeekBar) findViewById(R.id.alpha_seek_bar);
+        mAlphaSeekBar = (SeekBar)findViewById(R.id.alpha_seek_bar);
         mAlphaSeekBar.setProgress(Color.alpha(mFilterColor));
         mAlphaSeekBar.setEnabled(enableFilter);
         mAlphaSeekBar.setOnSeekBarChangeListener(this);
 
-        mRedSeekBar = (SeekBar) findViewById(R.id.red_seek_bar);
+        mRedSeekBar = (SeekBar)findViewById(R.id.red_seek_bar);
         mRedSeekBar.setProgress(Color.red(mFilterColor));
         mRedSeekBar.setEnabled(enableFilter);
         mRedSeekBar.setOnSeekBarChangeListener(this);
 
-        mGreenSeekBar = (SeekBar) findViewById(R.id.green_seek_bar);
+        mGreenSeekBar = (SeekBar)findViewById(R.id.green_seek_bar);
         mGreenSeekBar.setProgress(Color.green(mFilterColor));
         mGreenSeekBar.setEnabled(enableFilter);
         mGreenSeekBar.setOnSeekBarChangeListener(this);
 
-        mBlueSeekBar = (SeekBar) findViewById(R.id.blue_seek_bar);
+        mBlueSeekBar = (SeekBar)findViewById(R.id.blue_seek_bar);
         mBlueSeekBar.setProgress(Color.blue(mFilterColor));
         mBlueSeekBar.setEnabled(enableFilter);
         mBlueSeekBar.setOnSeekBarChangeListener(this);
 
-        mShowNotiCb = (CheckBox) findViewById(R.id.show_notification_check_box);
+        mShowNotiCb = (CheckBox)findViewById(R.id.show_notification_check_box);
         mShowNotiCb.setChecked(mSharf.getBoolean(SHARF_KEY_SHOW_NOTIFICATION, false));
         mShowNotiCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -223,20 +269,17 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
             @Override
             public void run() {
                 boolean showNoti = context.getSharedPreferences(MainActivity.SHARF_FILE_NAME, 0)
-                        .getBoolean(MainActivity.SHARF_KEY_SHOW_NOTIFICATION,
-                                false);
+                        .getBoolean(MainActivity.SHARF_KEY_SHOW_NOTIFICATION, false);
                 boolean enableFilter = context
-                        .getSharedPreferences(MainActivity.SHARF_FILE_NAME, 0)
-                        .getBoolean(MainActivity.SHARF_KEY_ENABLE_FILTER,
-                                false);
-                NotificationManager nm = (NotificationManager) context.getSystemService(
-                        Context.NOTIFICATION_SERVICE);
+                        .getSharedPreferences(MainActivity.SHARF_FILE_NAME, 0).getBoolean(
+                                MainActivity.SHARF_KEY_ENABLE_FILTER, false);
+                NotificationManager nm = (NotificationManager)context
+                        .getSystemService(Context.NOTIFICATION_SERVICE);
                 if (showNoti) {
                     Intent notifyIntent = new Intent(context, ColorFilterPanelService.class)
-                            .putExtra(
-                                    CHANG_STATE_FROM_NOTIFICATION, true);
-                    PendingIntent appIntent = PendingIntent.getService(context, 0,
-                            notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                            .putExtra(CHANG_STATE_FROM_NOTIFICATION, true);
+                    PendingIntent appIntent = PendingIntent.getService(context, 0, notifyIntent,
+                            PendingIntent.FLAG_UPDATE_CURRENT);
                     try {
                         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                             Notification.Builder builder = new Notification.Builder(context);
@@ -244,13 +287,12 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                     context.getResources()
                                             .getString(R.string.click_to_switch_state))
                                     .setContentText(
-                                            context.getResources()
-                                                    .getString(enableFilter
-                                                            ? R.string.enable_filter
+                                            context.getResources().getString(
+                                                    enableFilter ? R.string.enable_filter
                                                             : R.string.disable_filter))
                                     .setSmallIcon(R.drawable.ic_launcher)
-                                    .setContentIntent(appIntent)
-                                    .setAutoCancel(false).setOngoing(true);
+                                    .setContentIntent(appIntent).setAutoCancel(false)
+                                    .setOngoing(true);
                             nm.cancelAll();
                             int currentapiVersion = android.os.Build.VERSION.SDK_INT;
                             if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -267,14 +309,13 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                     context.getResources()
                                             .getString(R.string.click_to_switch_state))
                                     .setContentText(
-                                            context.getResources()
-                                                    .getString(enableFilter
-                                                            ? R.string.enable_filter
+                                            context.getResources().getString(
+                                                    enableFilter ? R.string.enable_filter
                                                             : R.string.disable_filter))
                                     .setSmallIcon(R.drawable.ic_launcher)
                                     .setContentIntent(appIntent)
-                                    .setPriority(Notification.PRIORITY_LOW)
-                                    .setAutoCancel(false).setOngoing(true);
+                                    .setPriority(Notification.PRIORITY_LOW).setAutoCancel(false)
+                                    .setOngoing(true);
                             nm.cancelAll();
                             nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
                         }
