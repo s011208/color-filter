@@ -3,7 +3,7 @@
     android:id="@+id/main_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#af000000" >
+    android:background="#8f000000" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -47,6 +47,10 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-thin"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/enable_filter"
                         android:textColor="#ffffff" />
 
@@ -58,6 +62,10 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-thin"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/disable_filter"
                         android:textColor="#ffffff" />
                 </RadioGroup>
@@ -80,6 +88,10 @@
                     android:fontFamily="sans-serif-thin"
                     android:gravity="center_vertical"
                     android:maxLines="3"
+                    android:shadowColor="#ff000000"
+                    android:shadowDx="@integer/text_shawdow"
+                    android:shadowDy="@integer/text_shawdow"
+                    android:shadowRadius="@integer/text_shawdow_radius"
                     android:text="@string/using_recommand_color"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
@@ -117,6 +129,10 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/alpha_text"
                         android:textColor="#ffffff" />
 
@@ -142,6 +158,10 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/red_text"
                         android:textColor="#ffffff" />
 
@@ -167,6 +187,10 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/green_text"
                         android:textColor="#ffffff" />
 
@@ -192,6 +216,10 @@
                         android:layout_marginRight="5dp"
                         android:fontFamily="sans-serif-thin"
                         android:gravity="center"
+                        android:shadowColor="#ff000000"
+                        android:shadowDx="@integer/text_shawdow"
+                        android:shadowDy="@integer/text_shawdow"
+                        android:shadowRadius="@integer/text_shawdow_radius"
                         android:text="@string/blue_text"
                         android:textColor="#ffffff" />
 
@@ -218,6 +246,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-thin"
+                    android:shadowColor="#ff000000"
+                    android:shadowDx="@integer/text_shawdow"
+                    android:shadowDy="@integer/text_shawdow"
+                    android:shadowRadius="@integer/text_shawdow_radius"
                     android:text="@string/show_notification"
                     android:textColor="#ffffff" />
             </LinearLayout>

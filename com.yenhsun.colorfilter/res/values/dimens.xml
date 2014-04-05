@@ -11,4 +11,6 @@
     <dimen name="navigation_bar_height">@*android:dimen/navigation_bar_height</dimen>
     <dimen name="pager_content_bg_color_strok_width">2dp</dimen>
 
+    <integer name="text_shawdow">3</integer>
+<integer name="text_shawdow_radius">2</integer>
 </resources>

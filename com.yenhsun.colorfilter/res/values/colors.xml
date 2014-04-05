@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="pager_content_bg_color_shadow">#45000000</color>
+    <color name="pager_content_bg_color_shadow">#80000000</color>
     <color name="pager_content_bg_color">#aaffffff</color>
 
 </resources>

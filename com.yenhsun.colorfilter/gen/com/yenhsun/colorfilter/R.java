@@ -9,7 +9,7 @@ package com.yenhsun.colorfilter;
 
 public final class R {
     public static final class array {
-        public static final int recommand_color=0x7f080000;
+        public static final int recommand_color=0x7f090000;
     }
     public static final class attr {
     }
@@ -80,19 +80,23 @@ public final class R {
         public static final int white_oval_bg=0x7f020028;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b000c;
-        public static final int alpha_seek_bar=0x7f0b0006;
-        public static final int blue_seek_bar=0x7f0b0009;
-        public static final int disable_filter=0x7f0b0004;
-        public static final int enable_filter=0x7f0b0003;
-        public static final int enable_group=0x7f0b0002;
-        public static final int green_seek_bar=0x7f0b0008;
-        public static final int linearLayoutAdmob=0x7f0b0001;
-        public static final int main_activity=0x7f0b0000;
-        public static final int recommand_color_spinnner=0x7f0b0005;
-        public static final int red_seek_bar=0x7f0b0007;
-        public static final int show_notification_check_box=0x7f0b000a;
-        public static final int switch_widget_view=0x7f0b000b;
+        public static final int action_settings=0x7f0c000c;
+        public static final int alpha_seek_bar=0x7f0c0006;
+        public static final int blue_seek_bar=0x7f0c0009;
+        public static final int disable_filter=0x7f0c0004;
+        public static final int enable_filter=0x7f0c0003;
+        public static final int enable_group=0x7f0c0002;
+        public static final int green_seek_bar=0x7f0c0008;
+        public static final int linearLayoutAdmob=0x7f0c0001;
+        public static final int main_activity=0x7f0c0000;
+        public static final int recommand_color_spinnner=0x7f0c0005;
+        public static final int red_seek_bar=0x7f0c0007;
+        public static final int show_notification_check_box=0x7f0c000a;
+        public static final int switch_widget_view=0x7f0c000b;
+    }
+    public static final class integer {
+        public static final int text_shawdow=0x7f070000;
+        public static final int text_shawdow_radius=0x7f070001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -100,24 +104,24 @@ public final class R {
         public static final int switch_widget=0x7f030002;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int main=0x7f0b0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f070001;
-        public static final int alpha_text=0x7f070008;
-        public static final int app_name=0x7f070000;
-        public static final int blue_text=0x7f07000b;
-        public static final int click_to_switch_state=0x7f070007;
-        public static final int disable_filter=0x7f070003;
-        public static final int enable_filter=0x7f070002;
-        public static final int green_text=0x7f07000a;
-        public static final int pick_color_btn=0x7f070004;
-        public static final int red_text=0x7f070009;
-        public static final int show_notification=0x7f070006;
-        public static final int start_filter_after_boot_completed=0x7f070005;
-        public static final int toast_hide_filter=0x7f07000e;
-        public static final int toast_show_filter=0x7f07000d;
-        public static final int using_recommand_color=0x7f07000c;
+        public static final int action_settings=0x7f080001;
+        public static final int alpha_text=0x7f080008;
+        public static final int app_name=0x7f080000;
+        public static final int blue_text=0x7f08000b;
+        public static final int click_to_switch_state=0x7f080007;
+        public static final int disable_filter=0x7f080003;
+        public static final int enable_filter=0x7f080002;
+        public static final int green_text=0x7f08000a;
+        public static final int pick_color_btn=0x7f080004;
+        public static final int red_text=0x7f080009;
+        public static final int show_notification=0x7f080006;
+        public static final int start_filter_after_boot_completed=0x7f080005;
+        public static final int toast_hide_filter=0x7f08000e;
+        public static final int toast_show_filter=0x7f08000d;
+        public static final int using_recommand_color=0x7f08000c;
     }
     public static final class style {
         /** 
@@ -145,23 +149,23 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
-        public static final int MyHoloStyle=0x7f090008;
-        public static final int RadioButtonMyHoloStyle=0x7f090004;
-        public static final int SeekBarSeekBarStyle=0x7f090007;
-        public static final int SeekBarStyle=0x7f09000a;
-        public static final int SpinnerDropDownItemMyHoloStyle=0x7f090006;
-        public static final int SpinnerMyHoloStyle=0x7f090005;
+        public static final int AppTheme=0x7f0a0001;
+        public static final int MyHoloStyle=0x7f0a0008;
+        public static final int RadioButtonMyHoloStyle=0x7f0a0004;
+        public static final int SeekBarSeekBarStyle=0x7f0a0007;
+        public static final int SeekBarStyle=0x7f0a000a;
+        public static final int SpinnerDropDownItemMyHoloStyle=0x7f0a0006;
+        public static final int SpinnerMyHoloStyle=0x7f0a0005;
         /**  <item name="android:windowTranslucentNavigation">true</item> 
          */
-        public static final int TransparentStyle=0x7f090002;
-        public static final int _MyHoloStyle=0x7f090009;
-        public static final int _SeekBarStyle=0x7f09000b;
-        public static final int btnStyleBeige=0x7f090003;
+        public static final int TransparentStyle=0x7f0a0002;
+        public static final int _MyHoloStyle=0x7f0a0009;
+        public static final int _SeekBarStyle=0x7f0a000b;
+        public static final int btnStyleBeige=0x7f0a0003;
     }
     public static final class xml {
         public static final int switch_widget=0x7f040000;

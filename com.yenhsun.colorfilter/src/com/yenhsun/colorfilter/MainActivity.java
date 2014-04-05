@@ -20,6 +20,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -275,11 +276,11 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                                 MainActivity.SHARF_KEY_ENABLE_FILTER, false);
                 NotificationManager nm = (NotificationManager)context
                         .getSystemService(Context.NOTIFICATION_SERVICE);
+                Intent notifyIntent = new Intent(context, ColorFilterPanelService.class).putExtra(
+                        CHANG_STATE_FROM_NOTIFICATION, true);
+                PendingIntent appIntent = PendingIntent.getService(context, 0, notifyIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
                 if (showNoti) {
-                    Intent notifyIntent = new Intent(context, ColorFilterPanelService.class)
-                            .putExtra(CHANG_STATE_FROM_NOTIFICATION, true);
-                    PendingIntent appIntent = PendingIntent.getService(context, 0, notifyIntent,
-                            PendingIntent.FLAG_UPDATE_CURRENT);
                     try {
                         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                             Notification.Builder builder = new Notification.Builder(context);
@@ -320,6 +321,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                             nm.notify(NOTIFICATION_TAG, NOTIFICATION_ID, builder.build());
                         }
                     } catch (Exception e) {
+                        Log.w(TAG, "failed to create notification", e);
                     }
                 } else {
                     nm.cancel(NOTIFICATION_TAG, NOTIFICATION_ID);
