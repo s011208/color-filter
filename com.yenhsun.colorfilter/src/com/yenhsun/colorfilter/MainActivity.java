@@ -121,7 +121,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
     private void bindService() {
         Intent intent = new Intent(MainActivity.this, ColorFilterPanelService.class);
-        startService(intent);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -155,9 +154,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         int navigationBarHeight = hasNavigationBar ? (int)getResources().getDimension(
                 R.dimen.navigation_bar_height) : 0;
         mMainLayout = (FrameLayout)findViewById(R.id.main_activity);
-        mMainLayout.setPadding(mMainLayout.getPaddingLeft(), statusBarHeight,
-                mMainLayout.getPaddingRight(), navigationBarHeight);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mMainLayout.setPadding(mMainLayout.getPaddingLeft(), statusBarHeight,
+                    mMainLayout.getPaddingRight(), navigationBarHeight);
         }
     }
 

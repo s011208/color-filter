@@ -165,6 +165,7 @@ public class ColorFilterPanelService extends Service {
         public void changeBackground(int color) throws RemoteException {
             // TODO Auto-generated method stub
             mColorFilterPanel.setBackgroundColor(color);
+            Log.e("QQQQ", "set color: " + color);
         }
     };
 
