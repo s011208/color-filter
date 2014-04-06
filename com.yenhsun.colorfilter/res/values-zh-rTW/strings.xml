@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">藍光濾波器</string>
+    <string name="app_name">保護眼睛 光波過濾器</string>
     <string name="action_settings">設定</string>
     <string name="enable_filter">啟動</string>
     <string name="disable_filter">關閉</string>

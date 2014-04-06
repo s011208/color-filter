@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Blue-ray Filter</string>
+    <string name="app_name">Eye protector - Light filter</string>
     <string name="action_settings">Settings</string>
     <string name="enable_filter">Enable</string>
     <string name="disable_filter">Disable</string>
