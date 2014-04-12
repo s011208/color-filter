@@ -160,7 +160,8 @@ public final class R {
         public static final int SeekBarStyle=0x7f0a000a;
         public static final int SpinnerDropDownItemMyHoloStyle=0x7f0a0006;
         public static final int SpinnerMyHoloStyle=0x7f0a0005;
-        /**  <item name="android:windowTranslucentNavigation">true</item> 
+        /**          <item name="android:windowTranslucentStatus">true</item> 
+         <item name="android:windowTranslucentNavigation">true</item> 
          */
         public static final int TransparentStyle=0x7f0a0002;
         public static final int _MyHoloStyle=0x7f0a0009;

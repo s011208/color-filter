@@ -129,7 +129,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        initMainLayout();
+//        initMainLayout();
         initComponents();
         addAdView();
         AdBuddiz.cacheAds(this);
@@ -153,7 +153,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         int statusBarHeight = (int)getResources().getDimension(R.dimen.status_bar_height);
         int navigationBarHeight = hasNavigationBar ? (int)getResources().getDimension(
                 R.dimen.navigation_bar_height) : 0;
-        mMainLayout = (FrameLayout)findViewById(R.id.main_activity);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mMainLayout.setPadding(mMainLayout.getPaddingLeft(), statusBarHeight,
                     mMainLayout.getPaddingRight(), navigationBarHeight);
@@ -215,6 +214,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     private void initComponents() {
+        mMainLayout = (FrameLayout)findViewById(R.id.main_activity);
         mSharf = getSharedPreferences(SHARF_FILE_NAME, 0);
         boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
         mFilterColor = mSharf.getInt(SHARF_KEY_FILTER_COLOR, DEFAULT_FILTER_COLOR);
