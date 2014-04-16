@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">眼の保護の専門家</string>
+    <string name="action_settings">設定し</string>
+    <string name="enable_filter">スタート</string>
+    <string name="disable_filter">クローズ</string>
+    <string name="pick_color_btn">色を選択</string>
+    <string name="start_filter_after_boot_completed">電源は自動的に有効になります</string>
+    <string name="show_notification">表示状態</string>
+    <string name="click_to_switch_state">状態を切り替える]をクリックします</string>
+    <string name="alpha_text">透明性</string>
+    <string name="red_text">レッド</string>
+    <string name="green_text">緑</string>
+    <string name="blue_text">青</string>
+    <string name="using_recommand_color">推奨色</string>
+    <string name="toast_show_filter">眼の保護の専門家が開始している</string>
+    <string name="toast_hide_filter">眼の保護の専門家が閉鎖されています</string>
+
+    <string-array name="recommand_color">
+        <item>ナチュラル色(推奨)</item>
+        <item>ピンク</item>
+        <item>薄緑</item>
+        <item>省電力モード</item>
+        <item>カスタム</item>
+    </string-array>
+
+</resources>

@@ -133,6 +133,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         initComponents();
         addAdView();
         AdBuddiz.cacheAds(this);
+        startService(new Intent(this, ColorFilterPanelService.class));
     }
 
     private void initMainLayout() {
@@ -187,7 +188,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                         });
                     }
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
