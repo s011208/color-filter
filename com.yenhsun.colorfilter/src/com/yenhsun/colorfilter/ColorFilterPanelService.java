@@ -69,12 +69,12 @@ public class ColorFilterPanelService extends Service {
             Log.d(TAG, "oncreate");
         mScreenWidth = getResources().getDisplayMetrics().widthPixels;
         mScreenHeight = getResources().getDisplayMetrics().heightPixels;
-        mWm = (WindowManager)getSystemService("window");
+        mWm = (WindowManager) getSystemService("window");
         mWmParams = getWindowManagerParamsSettings();
         mColorFilterPanel = new View(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_ON);
-        this.registerReceiver(mReceiver, filter);
+        registerReceiver(mReceiver, filter);
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -116,6 +116,7 @@ public class ColorFilterPanelService extends Service {
 
     public void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(mReceiver);
     }
 
     public int getStatusBarHeight() {
@@ -163,15 +164,12 @@ public class ColorFilterPanelService extends Service {
 
         @Override
         public void changeBackground(int color) throws RemoteException {
-            // TODO Auto-generated method stub
             mColorFilterPanel.setBackgroundColor(color);
-            Log.e("QQQQ", "set color: " + color);
         }
     };
 
     @Override
     public IBinder onBind(Intent arg0) {
-        // TODO Auto-generated method stub
         return mBinder;
     }
 
