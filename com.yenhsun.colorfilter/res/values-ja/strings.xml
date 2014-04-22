@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">眼の保護の専門家</string>
+    <string name="app_name">光フィルタの専門家</string>
     <string name="action_settings">設定し</string>
     <string name="enable_filter">スタート</string>
     <string name="disable_filter">クローズ</string>
@@ -14,8 +14,8 @@
     <string name="green_text">緑</string>
     <string name="blue_text">青</string>
     <string name="using_recommand_color">推奨色</string>
-    <string name="toast_show_filter">眼の保護の専門家が開始している</string>
-    <string name="toast_hide_filter">眼の保護の専門家が閉鎖されています</string>
+    <string name="toast_show_filter">光フィルタの専門家が開始している</string>
+    <string name="toast_hide_filter">光フィルタの専門家が閉鎖されています</string>
 
     <string-array name="recommand_color">
         <item>ナチュラル色(推奨)</item>
