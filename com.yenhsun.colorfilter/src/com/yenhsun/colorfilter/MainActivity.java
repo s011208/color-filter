@@ -44,6 +44,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener,
@@ -163,6 +164,9 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
 
     public void onBackPressed() {
         // AdBuddiz.showAd(this);
+        if (mInterstitial.isLoaded()) {
+            mInterstitial.show();
+        }
         super.onBackPressed();
     }
 
@@ -170,6 +174,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mAdView.destroy();
         super.onDestroy();
     }
+
+    private InterstitialAd mInterstitial;
 
     private void addAdView() {
         final FrameLayout fl = (FrameLayout) findViewById(R.id.ad_view_parent);
@@ -184,6 +190,10 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        mInterstitial = new InterstitialAd(this);
+        mInterstitial.setAdUnitId("ca-app-pub-6361389364792908/5748796629");
+        AdRequest interstitialAdRequest = new AdRequest.Builder().build();
+        mInterstitial.loadAd(interstitialAdRequest);
     }
 
     protected void onResume() {
