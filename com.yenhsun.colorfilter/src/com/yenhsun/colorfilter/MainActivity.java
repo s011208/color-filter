@@ -40,9 +40,10 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener,
@@ -129,7 +130,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-//        initMainLayout();
+        // initMainLayout();
         initComponents();
         addAdView();
         AdBuddiz.cacheAds(this);
@@ -144,15 +145,15 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
             Object windowManagerService = m.invoke(null, new Object[] {});
             c = windowManagerService.getClass();
             m = c.getDeclaredMethod("hasNavigationBar", new Class<?>[] {});
-            hasNavigationBar = (Boolean)m.invoke(windowManagerService, new Object[] {});
+            hasNavigationBar = (Boolean) m.invoke(windowManagerService, new Object[] {});
             if (DEBUG)
                 Log.d(TAG, "hasNavigationBar: " + hasNavigationBar);
         } catch (Exception e) {
             if (DEBUG)
                 Log.w(TAG, "failed to get windowManagerService", e);
         }
-        int statusBarHeight = (int)getResources().getDimension(R.dimen.status_bar_height);
-        int navigationBarHeight = hasNavigationBar ? (int)getResources().getDimension(
+        int statusBarHeight = (int) getResources().getDimension(R.dimen.status_bar_height);
+        int navigationBarHeight = hasNavigationBar ? (int) getResources().getDimension(
                 R.dimen.navigation_bar_height) : 0;
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mMainLayout.setPadding(mMainLayout.getPaddingLeft(), statusBarHeight,
@@ -166,36 +167,23 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     protected void onDestroy() {
+        mAdView.destroy();
         super.onDestroy();
     }
 
     private void addAdView() {
-        mAdView = new AdView(this, AdSize.BANNER, "a152d1374374ac9");
-        LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutAdmob);
-        layout.addView(mAdView);
-        new Thread(new Runnable() {
+        final FrameLayout fl = (FrameLayout) findViewById(R.id.ad_view_parent);
+        Button btn = (Button) findViewById(R.id.close_adview_btn);
+        btn.setOnClickListener(new OnClickListener() {
 
             @Override
-            public void run() {
-                while (true) {
-                    if (mIsForeGround) {
-                        MainActivity.this.runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                mAdView.loadAd(new AdRequest());
-                            }
-                        });
-                    }
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+            public void onClick(View v) {
+                fl.setVisibility(View.GONE);
             }
-        }).start();
-
+        });
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     protected void onResume() {
@@ -215,15 +203,15 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
     }
 
     private void initComponents() {
-        mMainLayout = (FrameLayout)findViewById(R.id.main_activity);
+        mMainLayout = (FrameLayout) findViewById(R.id.main_activity);
         mSharf = getSharedPreferences(SHARF_FILE_NAME, 0);
         boolean enableFilter = mSharf.getBoolean(SHARF_KEY_ENABLE_FILTER, false);
         mFilterColor = mSharf.getInt(SHARF_KEY_FILTER_COLOR, DEFAULT_FILTER_COLOR);
-        mEnableGroup = (RadioGroup)findViewById(R.id.enable_group);
+        mEnableGroup = (RadioGroup) findViewById(R.id.enable_group);
         mEnableGroup.check(enableFilter ? R.id.enable_filter : R.id.disable_filter);
         mEnableGroup.setOnCheckedChangeListener(this);
 
-        mRecommandColorSpinner = (Spinner)findViewById(R.id.recommand_color_spinnner);
+        mRecommandColorSpinner = (Spinner) findViewById(R.id.recommand_color_spinnner);
         String[] recommandColors = getResources().getStringArray(R.array.recommand_color);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, recommandColors);
@@ -232,27 +220,27 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
         mRecommandColorSpinner.setSelection(CUSTOMIZED_COLOR);
         mRecommandColorSpinner.setOnItemSelectedListener(this);
 
-        mAlphaSeekBar = (SeekBar)findViewById(R.id.alpha_seek_bar);
+        mAlphaSeekBar = (SeekBar) findViewById(R.id.alpha_seek_bar);
         mAlphaSeekBar.setProgress(Color.alpha(mFilterColor));
         mAlphaSeekBar.setEnabled(enableFilter);
         mAlphaSeekBar.setOnSeekBarChangeListener(this);
 
-        mRedSeekBar = (SeekBar)findViewById(R.id.red_seek_bar);
+        mRedSeekBar = (SeekBar) findViewById(R.id.red_seek_bar);
         mRedSeekBar.setProgress(Color.red(mFilterColor));
         mRedSeekBar.setEnabled(enableFilter);
         mRedSeekBar.setOnSeekBarChangeListener(this);
 
-        mGreenSeekBar = (SeekBar)findViewById(R.id.green_seek_bar);
+        mGreenSeekBar = (SeekBar) findViewById(R.id.green_seek_bar);
         mGreenSeekBar.setProgress(Color.green(mFilterColor));
         mGreenSeekBar.setEnabled(enableFilter);
         mGreenSeekBar.setOnSeekBarChangeListener(this);
 
-        mBlueSeekBar = (SeekBar)findViewById(R.id.blue_seek_bar);
+        mBlueSeekBar = (SeekBar) findViewById(R.id.blue_seek_bar);
         mBlueSeekBar.setProgress(Color.blue(mFilterColor));
         mBlueSeekBar.setEnabled(enableFilter);
         mBlueSeekBar.setOnSeekBarChangeListener(this);
 
-        mShowNotiCb = (CheckBox)findViewById(R.id.show_notification_check_box);
+        mShowNotiCb = (CheckBox) findViewById(R.id.show_notification_check_box);
         mShowNotiCb.setChecked(mSharf.getBoolean(SHARF_KEY_SHOW_NOTIFICATION, false));
         mShowNotiCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -274,7 +262,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener,
                 boolean enableFilter = context
                         .getSharedPreferences(MainActivity.SHARF_FILE_NAME, 0).getBoolean(
                                 MainActivity.SHARF_KEY_ENABLE_FILTER, false);
-                NotificationManager nm = (NotificationManager)context
+                NotificationManager nm = (NotificationManager) context
                         .getSystemService(Context.NOTIFICATION_SERVICE);
                 Intent notifyIntent = new Intent(context, ColorFilterPanelService.class).putExtra(
                         CHANG_STATE_FROM_NOTIFICATION, true);
